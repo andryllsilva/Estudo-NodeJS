@@ -55,4 +55,14 @@ module.exports = (app) => {
         }
       })
     })
+
+    routeID.delete((req, res) => {
+      db.remove({_id: req.params.id}, {}, error => {
+        if (error) {
+          app.utils.error.send(error, req, res);
+        } else {
+          res.status(200).json(req.params);
+        }
+      })
+    })
 } 
